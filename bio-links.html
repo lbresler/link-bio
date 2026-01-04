@@ -223,9 +223,9 @@
             color: var(--btn-text);
         }
         .link-item:active { transform: translateY(-1px); }
-        .link-icon { position: absolute; left: 20px; font-size: 1.3rem; opacity: 0.9; }
-        .link-text { text-align: center; }
-        .link-external { position: absolute; right: 20px; font-size: 0.85rem; opacity: 0.5; transition: opacity var(--transition-speed) ease; }
+        .link-icon { flex-shrink: 0; font-size: 1.3rem; opacity: 0.9; margin-right: 12px; }
+        .link-text { text-align: center; flex: 1; }
+        .link-external { flex-shrink: 0; font-size: 0.85rem; opacity: 0.5; transition: opacity var(--transition-speed) ease; margin-left: 12px; }
         .link-item:hover .link-external { opacity: 0.8; }
 
         /* ═══════════════════════════════════════════════════════════════════════════
@@ -351,8 +351,6 @@
             .avatar { width: 96px; height: 96px; }
             .profile-name { font-size: 1.4rem; }
             .link-item { padding: 14px 20px; min-height: 56px; }
-            .link-icon { left: 16px; }
-            .link-external { right: 16px; }
             .share-options { grid-template-columns: repeat(2, 1fr); }
             .copy-link-container { flex-direction: column; }
             .lang-btn { width: 32px; height: 32px; font-size: 18px; }
