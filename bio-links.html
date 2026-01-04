@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@alexmartin - Profile</title>
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Your bio description here - Digital content creator, web developer sharing tech and design discoveries">
+    <meta name="keywords" content="your, keywords, here, portfolio, links">
+    <meta name="author" content="Your Name">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourdomain.com/">
+    <meta property="og:title" content="@yourhandle - Profile">
+    <meta property="og:description" content="Your bio description here">
+    <meta property="og:image" content="https://yourdomain.com/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://yourdomain.com/">
+    <meta name="twitter:title" content="@yourhandle - Profile">
+    <meta name="twitter:description" content="Your bio description here">
+    <meta name="twitter:image" content="https://yourdomain.com/og-image.jpg">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://yourdomain.com/">
+    
+    <!-- ═══════════════════════════════════════════════════════════════════════════
+         FAVICON - Replace with your own favicon
+    ═══════════════════════════════════════════════════════════════════════════ -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔗</text></svg>">
+    
+    <!-- ═══════════════════════════════════════════════════════════════════════════
+         CDN RESOURCES
+    ═══════════════════════════════════════════════════════════════════════════ -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ═══════════════════════════════════════════════════════════════════════════
+           SECTION 1: CUSTOMIZABLE COLOR VARIABLES
+           ───────────────────────────────────────────────────────────────────────────
+           Modify these variables to fully customize the appearance.
+        ═══════════════════════════════════════════════════════════════════════════ */
+        :root {
+            --bg-gradient-start: #0f0c29;
+            --bg-gradient-middle: #302b63;
+            --bg-gradient-end: #24243e;
+            --btn-background: rgba(255, 255, 255, 0.08);
+            --btn-background-hover: rgba(255, 255, 255, 0.15);
+            --btn-border: rgba(255, 255, 255, 0.18);
+            --btn-border-hover: rgba(255, 255, 255, 0.35);
+            --btn-text: #ffffff;
+            --btn-shadow: rgba(0, 0, 0, 0.2);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.75);
+            --text-muted: rgba(255, 255, 255, 0.5);
+            --avatar-border: rgba(255, 255, 255, 0.25);
+            --avatar-shadow: rgba(0, 0, 0, 0.3);
+            --social-icon-color: rgba(255, 255, 255, 0.7);
+            --social-icon-hover: #ffffff;
+            --modal-bg: #1a1a2e;
+            --modal-text: #ffffff;
+            --modal-border: rgba(255, 255, 255, 0.1);
+            --border-radius: 16px;
+            --transition-speed: 0.3s;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════════════
+           SECTION 2: MULTILINGUAL MANAGEMENT VIA CSS
+           ───────────────────────────────────────────────────────────────────────────
+           The body receives a .lang-XX class (e.g., .lang-en, .lang-fr)
+           Elements with [data-lang="XX"] are shown/hidden accordingly.
+           
+           To ADD a language:
+           1. Add the CSS rules below (e.g., .lang-de [data-lang="de"])
+           2. Add HTML blocks with data-lang="XX"
+           3. Add the language button in #languageSwitcher
+           
+           To USE ONLY ONE LANGUAGE:
+           1. Remove HTML blocks of other languages
+           2. Hide #languageSwitcher (.language-switcher.single-lang)
+           3. Keep only elements without data-lang or with your language
+        ═══════════════════════════════════════════════════════════════════════════ */
+        
+        /* --- By default, all elements with data-lang are hidden (except language buttons) --- */
+        [data-lang]:not(.lang-btn) {
+            display: none !important;
+        }
+        
+        /* --- Conditional display based on active language on body --- */
+        /* Block elements (paragraphs, divs) */
+        body.lang-en [data-lang="en"] { display: block !important; }
+        body.lang-fr [data-lang="fr"] { display: block !important; }
+        /* Add other languages here:
+        body.lang-de [data-lang="de"] { display: block !important; }
+        body.lang-es [data-lang="es"] { display: block !important; }
+        */
+        
+        /* --- Inline elements (spans in buttons) --- */
+        body.lang-en span[data-lang="en"] { display: inline !important; }
+        body.lang-fr span[data-lang="fr"] { display: inline !important; }
+        
+        /* --- Main links (display: flex) --- */
+        body.lang-en a.link-item[data-lang="en"] { display: flex !important; }
+        body.lang-fr a.link-item[data-lang="fr"] { display: flex !important; }
+        
+        /* --- Hide switcher if only one language --- */
+        .language-switcher.single-lang {
+            display: none !important;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════════════
+           SECTION 3: BASE STYLES
+        ═══════════════════════════════════════════════════════════════════════════ */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-middle) 50%, var(--bg-gradient-end) 100%);
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle at 30% 20%, rgba(120, 80, 255, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(255, 100, 150, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .linktree-container { width: 100%; max-width: 680px; position: relative; z-index: 1; }
+
+        /* ═══════════════════════════════════════════════════════════════════════════
+           SECTION 4: LANGUAGE SWITCHER
+        ═══════════════════════════════════════════════════════════════════════════ */
+        .language-switcher {
+            position: absolute; top: 0; right: 0;
+            display: flex; gap: 8px; z-index: 100;
+        }
+        .lang-btn {
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.15);
+            cursor: pointer;
+            transition: all var(--transition-speed) ease;
+            padding: 0; overflow: hidden;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 20px; line-height: 1;
+        }
+        .lang-btn:hover { background: rgba(255, 255, 255, 0.25); transform: scale(1.1); border-color: rgba(255, 255, 255, 0.5); }
+        .lang-btn.active {
+            border-color: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════════════
+           SECTION 5: HEADER - AVATAR, NAME AND BIO
+        ═══════════════════════════════════════════════════════════════════════════ */
+        .profile-header { text-align: center; margin-bottom: 32px; padding-top: 50px; }
+        .avatar-wrapper { position: relative; display: inline-block; margin-bottom: 20px; }
+        .avatar {
+            width: 110px; height: 110px;
+            border-radius: 50%; object-fit: cover;
+            border: 3px solid var(--avatar-border);
+            box-shadow: 0 8px 32px var(--avatar-shadow);
+            transition: transform var(--transition-speed) ease;
+        }
+        .avatar:hover { transform: scale(1.05); }
+        .verified-badge {
+            position: absolute; bottom: 5px; right: 5px;
+            width: 28px; height: 28px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            border: 3px solid var(--bg-gradient-middle);
+            font-size: 12px; color: white;
+        }
+        .profile-name { font-size: 1.6rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; letter-spacing: -0.02em; }
+        .profile-handle { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 12px; }
+        .profile-bio { font-size: 1rem; color: var(--text-secondary); line-height: 1.6; max-width: 400px; margin: 0 auto; }
+
+        /* ═══════════════════════════════════════════════════════════════════════════
+           SECTION 6: LINKS LIST
+        ═══════════════════════════════════════════════════════════════════════════ */
+        .links-container { display: flex; flex-direction: column; gap: 14px; margin-bottom: 36px; }
+        .link-item {
+            display: flex; align-items: center; justify-content: center;
+            position: relative;
+            background: var(--btn-background);
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--btn-border);
+            border-radius: var(--border-radius);
+            padding: 16px 24px;
+            color: var(--btn-text);
+            text-decoration: none;
+            font-weight: 500; font-size: 1rem;
+            transition: all var(--transition-speed) ease;
+            box-shadow: 0 4px 15px var(--btn-shadow);
+            min-height: 60px;
+        }
+        .link-item:hover {
+            background: var(--btn-background-hover);
+            border-color: var(--btn-border-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px var(--btn-shadow);
+            color: var(--btn-text);
+        }
+        .link-item:active { transform: translateY(-1px); }
+        .link-icon { position: absolute; left: 20px; font-size: 1.3rem; opacity: 0.9; }
+        .link-text { text-align: center; }
+        .link-external { position: absolute; right: 20px; font-size: 0.85rem; opacity: 0.5; transition: opacity var(--transition-speed) ease; }
+        .link-item:hover .link-external { opacity: 0.8; }
+
+        /* ═══════════════════════════════════════════════════════════════════════════
+           SECTION 7: SOCIAL MEDIA ICONS
+        ═══════════════════════════════════════════════════════════════════════════ */
+        .social-icons { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 30px; }
+        .social-icon {
+            width: 44px; height: 44px;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--social-icon-color);
+            font-size: 1.4rem;
+            transition: all var(--transition-speed) ease;
+            border-radius: 50%;
+            text-decoration: none;
+        }
+        .social-icon:hover { color: var(--social-icon-hover); transform: translateY(-3px) scale(1.1); }
+
+        /* ═══════════════════════════════════════════════════════════════════════════
+           SECTION 8: SHARE AND QR CODE BUTTONS
+        ═══════════════════════════════════════════════════════════════════════════ */
+        .share-section { display: flex; justify-content: center; gap: 12px; margin-bottom: 30px; }
+        .share-btn {
+            display: flex; align-items: center; gap: 8px;
+            padding: 10px 20px;
+            background: var(--btn-background);
+            border: 1px solid var(--btn-border);
+            border-radius: 50px;
+            color: var(--text-secondary);
+            font-size: 0.9rem; font-weight: 500;
+            cursor: pointer;
+            transition: all var(--transition-speed) ease;
+        }
+        .share-btn:hover { background: var(--btn-background-hover); color: var(--text-primary); }
+
+        /* ═══════════════════════════════════════════════════════════════════════════
+           SECTION 9: FOOTER
+        ═══════════════════════════════════════════════════════════════════════════ */
+        .footer { text-align: center; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.08); }
+        .footer-logo {
+            display: inline-flex; align-items: center; gap: 8px;
+            color: var(--text-muted); font-size: 0.85rem;
+            text-decoration: none;
+            transition: color var(--transition-speed) ease;
+        }
+        .footer-logo:hover { color: var(--text-secondary); }
+        .footer-logo i { font-size: 1.1rem; }
+
+        /* ═══════════════════════════════════════════════════════════════════════════
+           SECTION 10: MODALS
+        ═══════════════════════════════════════════════════════════════════════════ */
+        .modal-content { background: var(--modal-bg); border: 1px solid var(--modal-border); border-radius: 20px; color: var(--modal-text); }
+        .modal-header { border-bottom: 1px solid var(--modal-border); padding: 20px 24px; }
+        .modal-title { font-weight: 600; font-size: 1.2rem; }
+        .modal-body { padding: 24px; }
+        .btn-close { filter: invert(1); opacity: 0.6; }
+        .btn-close:hover { opacity: 1; }
+        .qr-container { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+        .qr-code-wrapper { background: white; padding: 20px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); }
+        #qrcode { display: flex; justify-content: center; }
+        .qr-download-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none; padding: 12px 28px; border-radius: 50px;
+            color: white; font-weight: 600;
+            transition: all var(--transition-speed) ease;
+        }
+        .qr-download-btn:hover { transform: scale(1.05); box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4); color: white; }
+        .share-options { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+        .share-option {
+            display: flex; flex-direction: column; align-items: center; gap: 8px;
+            padding: 16px 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px; cursor: pointer;
+            transition: all var(--transition-speed) ease;
+            text-decoration: none;
+            color: var(--text-secondary);
+        }
+        .share-option:hover { background: rgba(255, 255, 255, 0.1); transform: translateY(-2px); color: var(--text-primary); }
+        .share-option i { font-size: 1.8rem; }
+        .share-option span { font-size: 0.8rem; }
+        .copy-link-container { display: flex; gap: 10px; }
+        .copy-link-input {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--modal-border);
+            border-radius: 10px; padding: 12px 16px;
+            color: var(--text-secondary); font-size: 0.9rem;
+        }
+        .copy-link-input:focus { outline: none; border-color: rgba(102, 126, 234, 0.5); }
+        .copy-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none; padding: 12px 20px; border-radius: 10px;
+            color: white; font-weight: 600; cursor: pointer;
+            transition: all var(--transition-speed) ease;
+            white-space: nowrap;
+        }
+        .copy-btn:hover { transform: scale(1.02); }
+        .copy-btn.copied { background: linear-gradient(135deg, #10b981 0%, #059669 100%); }
+
+        /* ═══════════════════════════════════════════════════════════════════════════
+           SECTION 11: ANIMATIONS
+        ═══════════════════════════════════════════════════════════════════════════ */
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .profile-header { animation: fadeInUp 0.6s ease-out; }
+        .link-item { animation: fadeInUp 0.6s ease-out; animation-fill-mode: both; }
+        .link-item:nth-child(1) { animation-delay: 0.1s; }
+        .link-item:nth-child(2) { animation-delay: 0.15s; }
+        .link-item:nth-child(3) { animation-delay: 0.2s; }
+        .link-item:nth-child(4) { animation-delay: 0.25s; }
+        .link-item:nth-child(5) { animation-delay: 0.3s; }
+        .link-item:nth-child(6) { animation-delay: 0.35s; }
+        .link-item:nth-child(7) { animation-delay: 0.4s; }
+        .link-item:nth-child(8) { animation-delay: 0.45s; }
+        .link-item:nth-child(9) { animation-delay: 0.5s; }
+        .link-item:nth-child(10) { animation-delay: 0.55s; }
+        .social-icons { animation: fadeInUp 0.6s ease-out 0.5s; animation-fill-mode: both; }
+        .share-section { animation: fadeInUp 0.6s ease-out 0.6s; animation-fill-mode: both; }
+
+        /* ═══════════════════════════════════════════════════════════════════════════
+           SECTION 12: RESPONSIVE
+        ═══════════════════════════════════════════════════════════════════════════ */
+        @media (max-width: 576px) {
+            body { padding: 30px 16px; }
+            .avatar { width: 96px; height: 96px; }
+            .profile-name { font-size: 1.4rem; }
+            .link-item { padding: 14px 20px; min-height: 56px; }
+            .link-icon { left: 16px; }
+            .link-external { right: 16px; }
+            .share-options { grid-template-columns: repeat(2, 1fr); }
+            .copy-link-container { flex-direction: column; }
+            .lang-btn { width: 32px; height: 32px; font-size: 18px; }
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════════════
+           SECTION 13: TOAST
+        ═══════════════════════════════════════════════════════════════════════════ */
+        .toast-container { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 9999; }
+        .toast { background: rgba(16, 185, 129, 0.95); backdrop-filter: blur(10px); border: none; border-radius: 50px; color: white; padding: 14px 28px; font-weight: 500; }
+    </style>
+</head>
+<body class="lang-en">
+<!-- 
+    ═══════════════════════════════════════════════════════════════════════════════
+    The class on <body> determines the displayed language:
+    - class="lang-en" → displays all elements with data-lang="en"
+    - class="lang-fr" → displays all elements with data-lang="fr"
+    
+    JavaScript detects the browser language and applies the correct class.
+    ═══════════════════════════════════════════════════════════════════════════════
+-->
+
+    <div class="linktree-container">
+        
+        <!-- ═══════════════════════════════════════════════════════════════════════
+             LANGUAGE SWITCHER
+             ───────────────────────────────────────────────────────────────────────
+             To ADD a language: add a button with data-lang="XX"
+             To REMOVE a language: delete the corresponding button
+             For ONE LANGUAGE ONLY: add the "single-lang" class to the div
+             
+             Example with only one language (French):
+             <div class="language-switcher single-lang" id="languageSwitcher">
+        ═══════════════════════════════════════════════════════════════════════ -->
+        <div class="language-switcher" id="languageSwitcher">
+            <button class="lang-btn" data-lang="en" title="English" aria-label="English">🇺🇸</button>
+            <button class="lang-btn" data-lang="fr" title="Français" aria-label="Français">🇫🇷</button>
+            <!-- Add other languages here:
+            <button class="lang-btn" data-lang="de" title="Deutsch" aria-label="Deutsch">🇩🇪</button>
+            <button class="lang-btn" data-lang="es" title="Español" aria-label="Español">🇪🇸</button>
+            -->
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════════════════════════
+             PROFILE HEADER
+             ───────────────────────────────────────────────────────────────────────
+             Avatar and handle are common to all languages.
+             Name and bio can be translated if needed.
+        ═══════════════════════════════════════════════════════════════════════ -->
+        <header class="profile-header">
+            <div class="avatar-wrapper">
+                <!-- AVATAR: Replace URL with your image (common to all languages) -->
+                <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=200&h=200&fit=crop&crop=face" 
+                     alt="Photo de profil" 
+                     class="avatar">
+                <!-- Verified badge (delete if not needed) -->
+                <div class="verified-badge"><i class="bi bi-check-lg"></i></div>
+            </div>
+            
+            <!-- NAME: Same or different depending on languages -->
+            <h1 class="profile-name">Alexandre Martin</h1>
+            
+            <!-- HANDLE: Common to all languages -->
+            <p class="profile-handle">@alexmartin</p>
+            
+            <!-- BIO: Translated according to language -->
+            <p class="profile-bio" data-lang="en">
+                Digital content creator 🎨 | Passionate web developer | Sharing my tech and design discoveries
+            </p>
+            <p class="profile-bio" data-lang="fr">
+                Créateur de contenu digital 🎨 | Développeur web passionné | Je partage mes découvertes tech et design
+            </p>
+        </header>
+
+        <!-- ═══════════════════════════════════════════════════════════════════════
+             LINKS LIST
+             ───────────────────────────────────────────────────────────────────────
+             Each link is duplicated per language with data-lang="XX".
+             
+             To ADD a link:
+             1. Copy a block <a class="link-item" data-lang="XX">...</a>
+             2. Modify the URL, icon and text
+             
+             For a link in ONE LANGUAGE ONLY:
+             Create the link only for that language (see "podcast-fr" example)
+             
+             For a link COMMON to all languages:
+             Remove the data-lang attribute (the link will always be visible)
+             
+             Available icons: https://icons.getbootstrap.com/
+        ═══════════════════════════════════════════════════════════════════════ -->
+        <div class="links-container">
+            
+            <!-- ═══════════════════════════════════════════════════════════════
+                 ENGLISH LINKS (data-lang="en")
+            ═══════════════════════════════════════════════════════════════ -->
+            
+            <!-- Link 1 EN: Website -->
+            <a href="https://www.example.com" class="link-item" data-lang="en" target="_blank">
+                <i class="bi bi-globe link-icon"></i>
+                <span class="link-text">My portfolio website</span>
+                <i class="bi bi-arrow-up-right link-external"></i>
+            </a>
+
+            <!-- Link 2 EN: Blog -->
+            <a href="https://blog.example.com/latest-article" class="link-item" data-lang="en" target="_blank">
+                <i class="bi bi-newspaper link-icon"></i>
+                <span class="link-text">📰 My latest blog post</span>
+                <i class="bi bi-arrow-up-right link-external"></i>
+            </a>
+
+            <!-- Link 3 EN: YouTube -->
+            <a href="https://youtube.com/@example" class="link-item" data-lang="en" target="_blank">
+                <i class="bi bi-youtube link-icon"></i>
+                <span class="link-text">My YouTube channel</span>
+                <i class="bi bi-arrow-up-right link-external"></i>
+            </a>
+
+            <!-- Link 4 EN: Newsletter -->
+            <a href="https://newsletter.example.com" class="link-item" data-lang="en" target="_blank">
+                <i class="bi bi-envelope-heart link-icon"></i>
+                <span class="link-text">Subscribe to my newsletter</span>
+                <i class="bi bi-arrow-up-right link-external"></i>
+            </a>
+
+            <!-- Link 5 EN: Shop -->
+            <a href="https://shop.example.com" class="link-item" data-lang="en" target="_blank">
+                <i class="bi bi-bag link-icon"></i>
+                <span class="link-text">🛍️ My online store</span>
+                <i class="bi bi-arrow-up-right link-external"></i>
+            </a>
+
+            <!-- Link 6 EN: Courses -->
+            <a href="https://courses.example.com" class="link-item" data-lang="en" target="_blank">
+                <i class="bi bi-mortarboard link-icon"></i>
+                <span class="link-text">My free courses</span>
+                <i class="bi bi-arrow-up-right link-external"></i>
+            </a>
+
+            <!-- Link 7 EN: Contact -->
+            <a href="mailto:contact@example.com" class="link-item" data-lang="en">
+                <i class="bi bi-chat-dots link-icon"></i>
+                <span class="link-text">Contact me</span>
+                <i class="bi bi-arrow-up-right link-external"></i>
+            </a>
+
+            <!-- ═══════════════════════════════════════════════════════════════
+                 FRENCH LINKS (data-lang="fr")
+            ═══════════════════════════════════════════════════════════════ -->
+            
+            <!-- Link 1 FR: Website -->
+            <a href="https://www.example.com/fr" class="link-item" data-lang="fr" target="_blank">
+                <i class="bi bi-globe link-icon"></i>
+                <span class="link-text">Mon site portfolio</span>
+                <i class="bi bi-arrow-up-right link-external"></i>
+            </a>
+
+            <!-- Link 2 FR: Blog -->
+            <a href="https://blog.example.com/fr/dernier-article" class="link-item" data-lang="fr" target="_blank">
+                <i class="bi bi-newspaper link-icon"></i>
+                <span class="link-text">📰 Mon dernier article de blog</span>
+                <i class="bi bi-arrow-up-right link-external"></i>
+            </a>
+
+            <!-- Link 3 FR: YouTube -->
+            <a href="https://youtube.com/@example" class="link-item" data-lang="fr" target="_blank">
+                <i class="bi bi-youtube link-icon"></i>
+                <span class="link-text">Ma chaîne YouTube</span>
+                <i class="bi bi-arrow-up-right link-external"></i>
+            </a>
+
+            <!-- Link 4 FR: Newsletter -->
+            <a href="https://newsletter.example.com/fr" class="link-item" data-lang="fr" target="_blank">
+                <i class="bi bi-envelope-heart link-icon"></i>
+                <span class="link-text">S'abonner à ma newsletter</span>
+                <i class="bi bi-arrow-up-right link-external"></i>
+            </a>
+
+            <!-- Link 5 FR: Shop -->
+            <a href="https://shop.example.com/fr" class="link-item" data-lang="fr" target="_blank">
+                <i class="bi bi-bag link-icon"></i>
+                <span class="link-text">🛍️ Ma boutique en ligne</span>
+                <i class="bi bi-arrow-up-right link-external"></i>
+            </a>
+
+            <!-- Link 6 FR: Courses -->
+            <a href="https://courses.example.com/fr" class="link-item" data-lang="fr" target="_blank">
+                <i class="bi bi-mortarboard link-icon"></i>
+                <span class="link-text">Mes formations gratuites</span>
+                <i class="bi bi-arrow-up-right link-external"></i>
+            </a>
+
+            <!-- Link 7 FR: Podcast (EXISTS ONLY IN FRENCH) -->
+            <a href="https://podcast.example.com/fr" class="link-item" data-lang="fr" target="_blank">
+                <i class="bi bi-mic link-icon"></i>
+                <span class="link-text">🎙️ Mon podcast en français</span>
+                <i class="bi bi-arrow-up-right link-external"></i>
+            </a>
+
+            <!-- Link 8 FR: Contact -->
+            <a href="mailto:contact@example.com" class="link-item" data-lang="fr">
+                <i class="bi bi-chat-dots link-icon"></i>
+                <span class="link-text">Me contacter</span>
+                <i class="bi bi-arrow-up-right link-external"></i>
+            </a>
+
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════════════════════════
+             SOCIAL MEDIA ICONS (common to all languages)
+             ───────────────────────────────────────────────────────────────────────
+             If you want different networks per language, add data-lang="XX"
+        ═══════════════════════════════════════════════════════════════════════ -->
+        <div class="social-icons">
+            <a href="https://instagram.com/example" class="social-icon" target="_blank" title="Instagram">
+                <i class="bi bi-instagram"></i>
+            </a>
+            <a href="https://twitter.com/example" class="social-icon" target="_blank" title="X (Twitter)">
+                <i class="bi bi-twitter-x"></i>
+            </a>
+            <a href="https://linkedin.com/in/example" class="social-icon" target="_blank" title="LinkedIn">
+                <i class="bi bi-linkedin"></i>
+            </a>
+            <a href="https://tiktok.com/@example" class="social-icon" target="_blank" title="TikTok">
+                <i class="bi bi-tiktok"></i>
+            </a>
+            <a href="https://github.com/example" class="social-icon" target="_blank" title="GitHub">
+                <i class="bi bi-github"></i>
+            </a>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════════════════════════
+             SHARE AND QR CODE BUTTONS
+        ═══════════════════════════════════════════════════════════════════════ -->
+        <div class="share-section">
+            <button class="share-btn" data-bs-toggle="modal" data-bs-target="#shareModal">
+                <i class="bi bi-share"></i>
+                <span data-lang="en">Share</span>
+                <span data-lang="fr">Partager</span>
+            </button>
+            <button class="share-btn" data-bs-toggle="modal" data-bs-target="#qrModal">
+                <i class="bi bi-qr-code"></i>
+                <span>QR Code</span>
+            </button>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════════════════════════
+             FOOTER
+        ═══════════════════════════════════════════════════════════════════════ -->
+        <footer class="footer">
+            <a href="#" class="footer-logo">
+                <i class="bi bi-link-45deg"></i>
+                <span data-lang="en">My LinkTree</span>
+                <span data-lang="fr">Mon LinkTree</span>
+            </a>
+        </footer>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════════
+         SHARE MODAL
+    ═══════════════════════════════════════════════════════════════════════════ -->
+    <div class="modal fade" id="shareModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <span data-lang="en">Share this profile</span>
+                        <span data-lang="fr">Partager ce profil</span>
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="share-options">
+                        <a href="#" class="share-option" id="shareWhatsapp" target="_blank">
+                            <i class="bi bi-whatsapp" style="color: #25D366;"></i>
+                            <span>WhatsApp</span>
+                        </a>
+                        <a href="#" class="share-option" id="shareFacebook" target="_blank">
+                            <i class="bi bi-facebook" style="color: #1877F2;"></i>
+                            <span>Facebook</span>
+                        </a>
+                        <a href="#" class="share-option" id="shareTwitter" target="_blank">
+                            <i class="bi bi-twitter-x"></i>
+                            <span>X</span>
+                        </a>
+                        <a href="#" class="share-option" id="shareLinkedin" target="_blank">
+                            <i class="bi bi-linkedin" style="color: #0A66C2;"></i>
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="#" class="share-option" id="shareTelegram" target="_blank">
+                            <i class="bi bi-telegram" style="color: #0088cc;"></i>
+                            <span>Telegram</span>
+                        </a>
+                        <a href="#" class="share-option" id="shareEmail">
+                            <i class="bi bi-envelope" style="color: #EA4335;"></i>
+                            <span>Email</span>
+                        </a>
+                        <a href="#" class="share-option" id="shareSms">
+                            <i class="bi bi-chat-dots" style="color: #34C759;"></i>
+                            <span>SMS</span>
+                        </a>
+                        <a href="#" class="share-option" id="shareMore">
+                            <i class="bi bi-three-dots"></i>
+                            <span data-lang="en">More</span>
+                            <span data-lang="fr">Plus</span>
+                        </a>
+                    </div>
+                    <div class="copy-link-container">
+                        <input type="text" class="copy-link-input" id="profileUrl" readonly>
+                        <button class="copy-btn" id="copyLinkBtn">
+                            <i class="bi bi-clipboard"></i>
+                            <span data-lang="en">Copy</span>
+                            <span data-lang="fr">Copier</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════════
+         QR CODE MODAL
+    ═══════════════════════════════════════════════════════════════════════════ -->
+    <div class="modal fade" id="qrModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">QR Code</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="qr-container">
+                        <div class="qr-code-wrapper">
+                            <div id="qrcode"></div>
+                        </div>
+                        <p class="text-center mb-3" style="color: var(--text-secondary);">
+                            <span data-lang="en">Scan this code to access the profile</span>
+                            <span data-lang="fr">Scannez ce code pour accéder au profil</span>
+                        </p>
+                        <button class="qr-download-btn" id="downloadQr">
+                            <i class="bi bi-download"></i>
+                            <span data-lang="en">Download QR Code</span>
+                            <span data-lang="fr">Télécharger le QR Code</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════════
+         TOAST NOTIFICATION
+    ═══════════════════════════════════════════════════════════════════════════ -->
+    <div class="toast-container">
+        <div class="toast align-items-center" role="alert" id="copyToast">
+            <div class="d-flex">
+                <div class="toast-body">
+                    <i class="bi bi-check-circle me-2"></i>
+                    <span data-lang="en">Link copied!</span>
+                    <span data-lang="fr">Lien copié !</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════════
+         SCRIPTS
+    ═══════════════════════════════════════════════════════════════════════════ -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+    
+    <script>
+    $(document).ready(function() {
+        
+        /* ═══════════════════════════════════════════════════════════════════════════
+           LANGUAGE CONFIGURATION
+           ───────────────────────────────────────────────────────────────────────────
+           Modify this array to add/remove languages.
+           The key must match the data-lang attributes in HTML.
+        ═══════════════════════════════════════════════════════════════════════════ */
+        const LANGUAGES = ['en', 'fr']; // Available languages
+        const DEFAULT_LANGUAGE = 'en';   // Default language
+        
+        // Share texts per language (for social links)
+        const SHARE_TEXTS = {
+            'en': 'Check out my profile!',
+            'fr': 'Découvrez mon profil !'
+        };
+        
+        let currentLanguage = DEFAULT_LANGUAGE;
+        const pageUrl = window.location.href;
+        
+        /* ═══════════════════════════════════════════════════════════════════════════
+           LANGUAGE DETECTION AND MANAGEMENT
+        ═══════════════════════════════════════════════════════════════════════════ */
+        
+        /**
+         * Detects browser language
+         */
+        function detectBrowserLanguage() {
+            const browserLang = (navigator.language || navigator.userLanguage).split('-')[0].toLowerCase();
+            return LANGUAGES.includes(browserLang) ? browserLang : DEFAULT_LANGUAGE;
+        }
+        
+        /**
+         * Applies the selected language
+         */
+        function setLanguage(lang) {
+            if (!LANGUAGES.includes(lang)) lang = DEFAULT_LANGUAGE;
+            
+            currentLanguage = lang;
+            localStorage.setItem('preferredLanguage', lang);
+            
+            // Change class on body
+            $('body').removeClass(LANGUAGES.map(l => 'lang-' + l).join(' ')).addClass('lang-' + lang);
+            
+            // Update HTML lang attribute
+            $('html').attr('lang', lang);
+            
+            // Update language buttons
+            $('.lang-btn').removeClass('active');
+            $('.lang-btn[data-lang="' + lang + '"]').addClass('active');
+            
+            // Update share links
+            updateShareLinks();
+        }
+        
+        /**
+         * Initializes language on page load
+         */
+        function initLanguage() {
+            const savedLang = localStorage.getItem('preferredLanguage');
+            const initialLang = (savedLang && LANGUAGES.includes(savedLang)) ? savedLang : detectBrowserLanguage();
+            setLanguage(initialLang);
+        }
+        
+        /* ═══════════════════════════════════════════════════════════════════════════
+           SHARE LINKS
+        ═══════════════════════════════════════════════════════════════════════════ */
+        
+        function updateShareLinks() {
+            const encodedUrl = encodeURIComponent(pageUrl);
+            const shareText = encodeURIComponent(SHARE_TEXTS[currentLanguage] || SHARE_TEXTS[DEFAULT_LANGUAGE]);
+            const pageTitle = encodeURIComponent(document.title);
+            
+            $('#shareWhatsapp').attr('href', 'https://wa.me/?text=' + shareText + '%20' + encodedUrl);
+            $('#shareFacebook').attr('href', 'https://www.facebook.com/sharer/sharer.php?u=' + encodedUrl);
+            $('#shareTwitter').attr('href', 'https://twitter.com/intent/tweet?url=' + encodedUrl + '&text=' + shareText);
+            $('#shareLinkedin').attr('href', 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodedUrl);
+            $('#shareTelegram').attr('href', 'https://t.me/share/url?url=' + encodedUrl + '&text=' + shareText);
+            $('#shareEmail').attr('href', 'mailto:?subject=' + pageTitle + '&body=' + shareText + '%20' + encodedUrl);
+            $('#shareSms').attr('href', 'sms:?body=' + shareText + '%20' + pageUrl);
+        }
+        
+        /* ═══════════════════════════════════════════════════════════════════════════
+           INITIALIZATION
+        ═══════════════════════════════════════════════════════════════════════════ */
+        
+        initLanguage();
+        $('#profileUrl').val(pageUrl);
+        
+        /* ═══════════════════════════════════════════════════════════════════════════
+           EVENTS
+        ═══════════════════════════════════════════════════════════════════════════ */
+        
+        // Language change
+        $('.lang-btn').on('click', function() {
+            setLanguage($(this).data('lang'));
+        });
+        
+        // QR Code
+        let qrcode = null;
+        $('#qrModal').on('shown.bs.modal', function() {
+            if (!qrcode) {
+                qrcode = new QRCode(document.getElementById('qrcode'), {
+                    text: pageUrl,
+                    width: 200,
+                    height: 200,
+                    colorDark: '#1a1a2e',
+                    colorLight: '#ffffff',
+                    correctLevel: QRCode.CorrectLevel.H
+                });
+            }
+        });
+        
+        // QR Code download
+        $('#downloadQr').on('click', function() {
+            const canvas = $('#qrcode canvas')[0];
+            if (canvas) {
+                const link = document.createElement('a');
+                link.download = 'qrcode-profil.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            }
+        });
+        
+        // Copy link
+        $('#copyLinkBtn').on('click', function() {
+            const $btn = $(this);
+            navigator.clipboard.writeText(pageUrl).then(function() {
+                $btn.addClass('copied');
+                new bootstrap.Toast($('#copyToast'), { delay: 2000 }).show();
+                setTimeout(function() { $btn.removeClass('copied'); }, 2000);
+            });
+        });
+        
+        // Native share
+        $('#shareMore').on('click', function(e) {
+            e.preventDefault();
+            if (navigator.share) {
+                navigator.share({
+                    title: document.title,
+                    text: SHARE_TEXTS[currentLanguage],
+                    url: pageUrl
+                });
+            }
+        });
+        
+        // Hover effect on links
+        $(document).on('mousemove', '.link-item', function(e) {
+            const rect = this.getBoundingClientRect();
+            $(this).css('background', 'radial-gradient(circle at ' + (e.clientX - rect.left) + 'px ' + (e.clientY - rect.top) + 'px, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.08) 100%)');
+        }).on('mouseleave', '.link-item', function() {
+            $(this).css('background', 'var(--btn-background)');
+        });
+        
+    });
+    </script>
+
+</body>
+</html>
