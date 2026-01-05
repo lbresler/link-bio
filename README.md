@@ -11,6 +11,7 @@ A single-file, multilingual Linktree clone with SEO-friendly static HTML links. 
 ## 🌐 Live Demo
 
 **[View Live Demo →](https://www.ediware.eu/bio_links_demo.html)**
+
 **[View Reel Demo →](https://www.ediware.net/link-bio.html)**
 
 ## ✨ Features
